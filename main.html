@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0"/>
+<title>LD</title>
+</head>
+
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<script id="shader-fs" type="x-shader/x-fragment">
+    precision mediump float;
+
+    void main(void) {
+        gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+    }
+</script>
+
+<script id="shader-vs" type="x-shader/x-vertex">
+    attribute vec3 aVertexPosition;
+
+    uniform mat4 camera_matrix;
+
+    void main(void) {
+        gl_Position = camera_matrix*vec4(aVertexPosition, 1.0);
+    }
+</script>
+
+
+
+<body style="background-color:#1F1F1F;">
+	<script src="js/thirdparty/glMatrix-0.9.5.min.js"></script>
+	<script src="js/misc.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/render.js"></script>
+	<script src="js/core.js"></script>
+
+	
+	<canvas id="glwindow" align="centre" width="900" height="500">
+	</canvas>
+
+	<button id="Fullscreen" width="90" height="60" onclick="render.RequestFullscreen()">Fullscreen</button>
+	
+</body>
+
+<body onload="core.Initialize()"></body>
+</html>
+
